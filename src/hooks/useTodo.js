@@ -1,12 +1,7 @@
 import { useReducer, useState } from 'react';
 import { todoReducer } from '../reducers/todoReducer';
 
-const initialState = [ {
-    id: new Date().getMilliseconds(),
-    category: 'Home',
-    desc: 'hola',
-    done: false
-  } ];
+const initialState = [ ];
 
 export const useTodo = () => {
     const [todos, dispatch] = useReducer(todoReducer, initialState );
