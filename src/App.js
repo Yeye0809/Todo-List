@@ -5,7 +5,7 @@ import { TodoContext } from "./context/TodoContext";
 
 function App() {
 
-  const {todos} = useContext(TodoContext);
+  const {todos, handleShowForm} = useContext(TodoContext);
 
   return (
     <div className="container-App">
@@ -14,6 +14,13 @@ function App() {
       </header>
           
       <TodoList todos={ todos }/>
+
+      <button 
+          className="btn-new--todo"
+          onClick={ handleShowForm }  
+        >
+          <i className="fa-solid fa-plus"></i>
+        </button>
 
     </div>
   );

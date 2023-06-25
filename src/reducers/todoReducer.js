@@ -1,9 +1,14 @@
 
 export const todoReducer =  ( state, action)=>{
 
-    switch( action ){
-        
-    }
+    switch( action.type ){
+        case '[TODO] add-todo':
+            return [
+                ...state,
+                action.payload,
+            ]
 
-    return state
+        default:
+            return state
+    }
 }

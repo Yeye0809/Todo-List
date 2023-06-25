@@ -1,14 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { TodoItem } from './TodoItem';
 import { AddTodo } from './';
+import { TodoContext } from '../context/TodoContext';
 
 export const TodoList = ({todos}) => {
 
-  const [showForm, setShowForm] = useState(false);
-
-  const handleShowForm = ()=>{
-    setShowForm(!showForm);
-  }
+  const {showForm} = useContext(TodoContext);
 
   return (
     <div className="container-list">
@@ -21,13 +18,8 @@ export const TodoList = ({todos}) => {
         {
           showForm && <AddTodo />
         }
+      
 
-        <button 
-          className="btn-new--todo"
-          onClick={ handleShowForm }  
-        >
-          <i className="fa-solid fa-plus"></i>
-        </button>
     </div>    
   )
 }
