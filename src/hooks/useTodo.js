@@ -1,66 +1,64 @@
-import { useEffect, useReducer, useState } from 'react';
-import { todoReducer } from '../reducers/todoReducer';
+import { useEffect, useReducer, useState } from "react";
+import { todoReducer } from "../reducers/todoReducer";
 
-const initialState = [ ];
+const initialState = [];
 
-const init = () =>{
-  const oldTodos = localStorage.getItem('todos');
+const init = () => {
+  const oldTodos = localStorage.getItem("todos");
   return JSON.parse(oldTodos);
-}
+};
 
 export const useTodo = () => {
-    const [todos, dispatch] = useReducer(todoReducer, initialState, init );
+  const [todos, dispatch] = useReducer(todoReducer, initialState, init);
 
-    const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
-    useEffect(()=>{
-      localStorage.setItem('todos', JSON.stringify(todos));
-    },[todos]);
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
-    const handleShowForm = ()=>{
-      setShowForm(!showForm);
+  const handleShowForm = () => {
+    setShowForm(!showForm);
+  };
+
+  const createTodo = (todoValue) => {
+    const { category, desc } = todoValue;
+    const newTodo = {
+      id: new Date().getMilliseconds(),
+      category,
+      desc,
+      done: false,
     };
 
-    const handleNewTodo = (todoValue) =>{
-
-      const {category, desc} = todoValue;
-      const newTodo = {
-        id: new Date().getMilliseconds(),
-        category,
-        desc,
-        done: false
-      };
-
-      const action = {
-        type: '[TODO] add-todo',
-        payload: newTodo,
-      };
-
-      dispatch(action);
+    const action = {
+      type: "[TODO] add-todo",
+      payload: newTodo,
     };
 
-    const handleToggleTodo = (id) =>{
-        dispatch({
-            type: '[TODO] todo-toggle',
-            payload: id
-        });
-    };
+    dispatch(action);
+  };
 
-    const handleDeleteTodo = (id) =>{
-        dispatch({
-            type: '[TODO] delete-todo',
-            payload: id
-        });
-    };
+  const handleToggleTodo = (id) => {
+    dispatch({
+      type: "[TODO] todo-toggle",
+      payload: id,
+    });
+  };
 
-    return{
-        todos,
-        showForm,
-        setShowForm,
-        handleShowForm,
-        handleNewTodo,
-        handleToggleTodo,
-        handleDeleteTodo,
-    }
-}
+  const deleteTodo = (id) => {
+    dispatch({
+      type: "[TODO] delete-todo",
+      payload: id,
+    });
+  };
 
+  return {
+    todos,
+    showForm,
+    setShowForm,
+    handleShowForm,
+    handleNewTodo: createTodo,
+    handleToggleTodo,
+    handleDeleteTodo: deleteTodo,
+  };
+};
