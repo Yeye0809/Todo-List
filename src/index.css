@@ -15,11 +15,11 @@
   font-size: 62.5%;
 }
 form{
-  position: absolute;
-  top: 20px;
+  position: fixed;
+  top: 75px;
+  left: calc(50% - 135px);
   width: 270px;
   height: 200px;
-  margin: 0 auto;
   z-index: 999;
   border-radius: 10px;
   background-color: var(--off-white);
@@ -90,12 +90,20 @@ form button{
   flex-direction: column;
   width: 90%;
   min-width: 288px;
-  min-height: 415px;
-  height: calc( 100% - 65px );
+  min-height: calc( 100vh - 65px );
+  height: auto;
   margin: 0 auto;
   margin-top: 10px;
   padding: 10px;
+  border-radius: 10px;
   background-color: hsl(0deg 0% 85%);
+  box-shadow: 0px 4px 8px rgba( 87, 73, 30, 0.30);
+
+}
+.container-list > p{
+  font-size: 2.8rem;
+  color: var(--grey);
+  text-align: center;
 }
 .todo-container{
   width: 250px;
@@ -133,13 +141,15 @@ form button{
 }
 .btn-new--todo{
   position: fixed;
-  left: calc( 50% - 20px);
-  top: calc( 100vh - 50px );
-  width: 40px;
-  height: 40px;
+  left: calc( 50% - 25px);
+  top: calc( 100vh - 65px );
+  width: 50px;
+  height: 50px;
   border: 3px solid var(--just-white);
   border-radius: 50%;
   background-color: var(--secondary-blue);
+  box-shadow: 0px 4px 8px rgba( 87, 73, 30, 0.45);
+
 }
 .btn-new--todo i{
   font-size: 1.6rem;

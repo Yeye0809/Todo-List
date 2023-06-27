@@ -9,8 +9,13 @@ export const TodoList = ({todos}) => {
 
   return (
     <div className="container-list">
+
+      {
+        (todos?.length <= 0) && <p>ADD A TASK</p>
+      }
+
         {
-            todos.map( todo =>(
+            todos?.map( todo =>(
                 <TodoItem key={ todo.id } todo={ todo }/>
             ))
         }

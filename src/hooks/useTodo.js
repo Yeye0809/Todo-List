@@ -1,16 +1,25 @@
-import { useReducer, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { todoReducer } from '../reducers/todoReducer';
 
 const initialState = [ ];
 
+const init = () =>{
+  const oldTodos = localStorage.getItem('todos');
+  return JSON.parse(oldTodos);
+}
+
 export const useTodo = () => {
-    const [todos, dispatch] = useReducer(todoReducer, initialState );
+    const [todos, dispatch] = useReducer(todoReducer, initialState, init );
 
     const [showForm, setShowForm] = useState(false);
 
+    useEffect(()=>{
+      localStorage.setItem('todos', JSON.stringify(todos));
+    },[todos]);
+
     const handleShowForm = ()=>{
       setShowForm(!showForm);
-    }
+    };
 
     const handleNewTodo = (todoValue) =>{
 

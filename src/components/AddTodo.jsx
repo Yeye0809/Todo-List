@@ -37,7 +37,7 @@ export const AddTodo = () => {
             >
                 <option value="">Select category</option>
                 <option value="home">Home</option>
-                <option value="word">Word</option>
+                <option value="job">Job</option>
                 <option value="personal">Personal</option>
             </select>
            </div> 
