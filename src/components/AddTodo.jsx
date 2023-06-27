@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { TodoContext } from "../context/TodoContext";
+import Swal from "sweetalert2";
 
 export const AddTodo = () => {
 
@@ -13,6 +14,7 @@ export const AddTodo = () => {
   const { desc } = formValue;
 
   const handleFormValue = ({target}) =>{
+
     const {name, value} = target
      setFormValue({
       ...formValue,
@@ -22,6 +24,14 @@ export const AddTodo = () => {
 
   const handleSubmit = (event)=>{
     event.preventDefault();
+    if( formValue.category.length === 0 || formValue.desc.length === 0 ) {
+      return Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'you must complete the form!',
+      })
+    }
+
     handleNewTodo(formValue);
     setShowForm(!showForm);
   }
