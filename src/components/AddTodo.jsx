@@ -11,7 +11,7 @@ export const AddTodo = () => {
     desc: '',
   });
 
-  const { desc } = formValue;
+  const { desc, category } = formValue;
 
   const handleFormValue = ({target}) =>{
 
@@ -24,7 +24,7 @@ export const AddTodo = () => {
 
   const handleSubmit = (event)=>{
     event.preventDefault();
-    if( formValue.category.length === 0 || formValue.desc.length === 0 ) {
+    if( category.length === 0 || desc.length === 0 ) {
       return Swal.fire({
         icon: 'error',
         title: 'Oops...',

@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from 'react';
 import { todoReducer } from '../reducers/todoReducer';
 
-const initialState = [ ];
+const initialState = [];
 
 const init = () =>{
   const oldTodos = localStorage.getItem('todos');
